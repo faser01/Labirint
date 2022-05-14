@@ -94,12 +94,12 @@ void display() {
 		if (end1 == 0) {
 			SetConsoleCursorPosition(hStdOut, { 0, 8 });
 			SetColor(15, 0);
-			std::cout << "Сложные коридоры... Всё уже определено";//само сообщение
+			std::cout << "Сложные коридоры... Всё уже определено";
 			SetColor(0, 0);
 			end1 = 1;
 		}
 
-		if (playerx == 43 && playery == 59 && end2 == 0) {// ghjkknhukuj
+		if (playerx == 43 && playery == 59 && end2 == 0) {
 			SetConsoleCursorPosition(hStdOut, { 0, 9 });
 			SetColor(15, 0);
 			std::cout << "Простой выбор, но это лишь обман";
