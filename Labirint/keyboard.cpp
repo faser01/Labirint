@@ -4,7 +4,7 @@ extern int map1[100][100];
 extern int playerx;
 extern int playery;
 
-char foundkey(int key) {
+char foundkey(int key) {// управление клавишами
     char keychar = ' ';
 
     if ((key == 87 || key == 119 || key == 230 || key == 150)) {
