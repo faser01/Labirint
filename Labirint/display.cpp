@@ -5,12 +5,16 @@ extern int map1[100][100];
 extern int mapoutput[11][7];
 extern int playerx;
 extern int playery;
+extern int money;
+extern int steps;
 
 int end = 0;
 int end1 = 0;
 int end2 = 0;
 int end3 = 0;
 int end4 = 0;
+int end5 = 0;
+int end6 = 0;
 
 
 
@@ -67,7 +71,21 @@ void display() {
 			}
 			if (mapoutput[dispx][dispy] == 2) {//игрок
 				SetConsoleCursorPosition(hStdOut, { dispx * 2, dispy });
-				SetColor(1, 1);
+				SetColor(4, 4);
+				std::cout << "##";
+				SetColor(0, 0);
+			}
+
+			if (mapoutput[dispx][dispy] == 3) {//монета
+				SetConsoleCursorPosition(hStdOut, { dispx * 2, dispy });
+				SetColor(14, 0);
+				std::cout << " $";
+				SetColor(0, 0);
+			}
+
+			if (mapoutput[dispx][dispy] == 4) {//ворота
+				SetConsoleCursorPosition(hStdOut, { dispx * 2, dispy });
+				SetColor(4, 0);
 				std::cout << "##";
 				SetColor(0, 0);
 			}
@@ -86,16 +104,20 @@ void display() {
 		std::cout << playerx << " ";
 		SetConsoleCursorPosition(hStdOut, { 24, 2 });
 		std::cout << playery << " ";
+		SetConsoleCursorPosition(hStdOut, { 24, 4 });
+		std::cout << "$  " << money;
+		SetConsoleCursorPosition(hStdOut, { 24, 6 });
+		std::cout << "Шагов осталось " << steps << "  ";
 		SetColor(0, 0);
 
 
+		//приколюшки по ходу игры
 
-		//Определенная точка в лабиринте выводит сообщение для игрока
 		if (end1 == 0) {
 			SetConsoleCursorPosition(hStdOut, { 0, 8 });
 			SetColor(15, 0);
 			std::cout << "Сложные коридоры... Всё уже определено";
-			SetColor(0, 0);
+			SetColor(0, 4);
 			end1 = 1;
 		}
 
@@ -109,7 +131,7 @@ void display() {
 		if (playerx == 3 && playery == 59 && end3 == 0) {
 			SetConsoleCursorPosition(hStdOut, { 0, 10 });
 			SetColor(15, 0);
-			std::cout << "Прямой путь лишь облегчал участь ... End";
+			std::cout << "Прямой путь лишь облегчал участь... End";
 			SetColor(0, 0);
 			end3 = 1;
 			end = 1;
@@ -122,6 +144,25 @@ void display() {
 			end4 = 1;
 			end = 1;
 		}
+
+		if (money >= 1000 && end5 == 0) {
+			SetConsoleCursorPosition(hStdOut, { 0, 10 });
+			SetColor(15, 0);
+			std::cout << "Богатсво не помогло... End.";
+			SetColor(0, 0);
+			end5 = 1;
+			end = 1;
+		}
+		if (steps <= 0 && end6 == 0) {
+			SetConsoleCursorPosition(hStdOut, { 0, 10 });
+			SetColor(15, 0);
+			std::cout << "«И сделал он последний шаг...» End.";
+			SetColor(0, 0);
+			end5 = 1;
+			end = 1;
+		}
+
+
 
 
 

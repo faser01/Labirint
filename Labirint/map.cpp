@@ -1,4 +1,7 @@
 extern int map1[100][100];
+extern int playerx;
+extern int playery;
+extern int money;
 void fllx(int x, int y, int xend) { //для быстрого заполнения массива
 	int fx = x;
 	while (fx < xend + 1) {
@@ -33,6 +36,7 @@ void level1() {
 		y++;
 	}
 
+	//карта прорисована сначала в paint затем вручную прописана
 
 	fllx(10, 10, 14);
 	flly(10, 7, 13);
@@ -151,8 +155,6 @@ void level1() {
 	flly(51, 1, 3);
 	flly(45, 5, 8);
 	fllx(45, 5, 51);
-
-
 	fllx(52, 3, 57);
 	fllx(52, 5, 55);
 	flly(55, 5, 26);
@@ -234,4 +236,62 @@ void level1() {
 	fllx(67, 26, 89);
 	fllx(91, 26, 98);
 
+
+	map1[13][9] = 3;
+	map1[21][9] = 3;
+	map1[18][18] = 3;
+	map1[5][14] = 3;
+	map1[40][12] = 3;
+
+	map1[51][4] = 4;
+	map1[43][57] = 4;
+
+	map1[27][27] = 3;
+	map1[9][35] = 3;
+	map1[56][51] = 3;
+	map1[15][38] = 3;
+	map1[60][55] = 3;
+
+	map1[91][27] = 1;
+	map1[3][56] = 4;
+
+
+	map1[4][56] = 3;
+	map1[5][56] = 3;
+	map1[6][56] = 3;
+	map1[7][56] = 3;
+	map1[8][56] = 3;
+	map1[9][56] = 3;
+	map1[10][56] = 3;
+	map1[11][56] = 3;
+	map1[12][56] = 3;
+	map1[13][56] = 3;
+	map1[14][56] = 3;
+
+}
+void update() {
+	if (map1[playerx][playery] == 3) { 
+		map1[playerx][playery] = 0;
+		money += 100;
+	}
+
+	if (money >= 500) {
+		if (map1[playerx + 1][playery] == 4) {
+			map1[playerx + 1][playery] = 0;
+			money -= 500;
+		}
+		if (map1[playerx - 1][playery] == 4) {
+			map1[playerx - 1][playery] = 0;
+			money -= 500;
+		}
+		if (map1[playerx][playery + 1] == 4) {
+			map1[playerx][playery + 1] = 0;
+			money -= 500;
+		}
+		if (map1[playerx][playery - 1] == 4) {
+			map1[playerx][playery - 1] = 0;
+			money -= 500;
+		}
+
+	}
 }
